@@ -1,0 +1,159 @@
+@font-face {
+  font-family: Andika-R;
+  src: url(../fonts/Andika-R.ttf);
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Andika-R;
+}
+
+input {
+  width: 100%;
+  height: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 2px solid #66bad5;
+  border-radius: 5px;
+  outline: none;
+  font-family: Andika-R;
+  font-size: 16px;
+}
+
+hr {
+  margin: 20px 0;
+}
+
+button {
+  width: 200px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  background-color: #66bad5;
+  color: white;
+  font-family: Andika-R;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #7fc5dc;
+  box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+.select {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 50px;
+  margin-top: 20px;
+  line-height: 3;
+  background: #5c6664;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #aab3b1;
+  cursor: pointer;
+  pointer-events: none;
+  transition: .25s all ease;
+}
+
+.select:hover::after {
+  color: #23b499;
+}
+
+.select select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  border: 2px solid #66bad5;
+  border-radius: 5px;
+  box-shadow: none;
+  background: white;
+  background-image: none;
+  flex: 1;
+  padding: 0 .5em;
+  color: #000;
+  cursor:pointer;
+  font-family: Andika-R;
+  font-size: 16px;
+}
+
+.select select::-ms-expand {
+  display: none;
+}
+
+.post-app {
+  margin: 2% 25%;
+}
+
+.post-list {
+  padding-bottom: 20px;
+}
+
+.post-list > h2 {
+  text-align: center;
+}
+
+.post-list__item {
+  margin: 20px 0;
+  border: 2px solid #66bad5;
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.post-list__item:hover {
+  background-color: #eff8fa;
+}
+
+.error-image {
+  margin: 10% 20%;
+  width: 60%;
+}
+
+.post-id {
+  margin: 20px;
+}
+
+.post-id__comment {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #66bad5;
+  border-radius: 10px;
+}
+
+.pagination {
+  margin: 40px 0;
+}
+
+.pagination__item {
+  border: 1px solid #66bad5;
+  cursor: pointer;
+  padding: 10px;
+  margin-right: 5px;
+}
+
+.pagination__item:hover {
+  background-color: #eff8fa;
+}
+
+.pagination__item_color {
+  background-color: #b2dcea;
+  font-weight: bold;
+}
