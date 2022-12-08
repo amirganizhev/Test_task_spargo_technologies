@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import PostItem from '../components/PostItem';
 import PostAddForm from '../components/PostAddForm';
+import SelectSort from '../components/SelectSort';
+import InputSearchId from '../components/InputSearchId';
 import PostService from '../API/PostService';
+import PostList from '../components/PostList';
 
 function PostsPage() {
 
@@ -68,49 +70,36 @@ function PostsPage() {
 
   return (
     <div className='post-app'>
-    <h1>Тестовое задание "Спарго технологии"</h1>
-    <PostAddForm postsCount={posts.length + 1} create={createPost} />
-    <div className='select'>
-        <select defaultValue='selected' onChange={changePostsLimit}>
-            <option disabled value='selected'>Выбрать количество отображаемых постов</option>
-            <option value='10'>10</option>
-            <option value='20'>20</option>
-            <option value='50'>50</option>
-            <option value='100'>100</option>
-        </select>
-    </div>
-    <div className='select'>
-        <select defaultValue='selected' onChange={sortPosts}>
-            <option disabled value='selected'>Сортировка по ID</option>
-            <option value='increase'>Сортировка по возрастанию ID</option>
-            <option value='descending'>Сортировка по убыванию ID</option>
-        </select>
-    </div>
-    <input 
-        type='text'
-        placeholder='Поиск по ID'
-        value={searchId}
-        onChange={e => setSearchId(e.target.value)}
-    />
-    <div className='post-list'>
-        <h2>Список постов</h2>
-        {filterPosts.map((post) =>
-            <PostItem post={post} key={post.id} />
-        )}
-        <div className='pagination'>
-            {pagesArray.map(page => {
-                return (
-                    <span 
-                        key={page} 
-                        className={pageNumber === page ? 'pagination__item pagination__item_color' : 'pagination__item'}
-                        onClick={() => changePageNumber(page)}
-                    >
-                        {page}
-                    </span>
-                )}
-            )}
-        </div>
-    </div>
+      <h1>Тестовое задание "Спарго технологии"</h1>
+      <PostAddForm postsCount={posts.length + 1} create={createPost} />
+      <SelectSort
+          onChange={changePostsLimit}
+          selectName="Выбрать количество отображаемых постов"
+          options={[
+              {optionValue: 10, optionName: '10'},
+              {optionValue: 20, optionName: '20'},
+              {optionValue: 50, optionName: '50'},
+              {optionValue: 100, optionName: '100'}
+          ]}
+      />
+      <SelectSort
+          onChange={sortPosts}
+          selectName="Сортировка по ID"
+          options={[
+              {optionValue: 'increase', optionName: 'Сортировка по возрастанию ID'},
+              {optionValue: 'descending', optionName: 'Сортировка по убыванию ID'}
+          ]}
+      />
+      <InputSearchId 
+          value={searchId}
+          onChange={e => setSearchId(e.target.value)}
+      />
+      <PostList 
+          posts={filterPosts}
+          pagination={pagesArray}
+          currentPage={pageNumber}
+          onClick={changePageNumber}
+      />
     </div>
   );
 }

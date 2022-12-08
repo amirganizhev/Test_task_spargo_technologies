@@ -7,14 +7,14 @@ function PostIdPage() {
     const params = useParams()
     const [comments, setComments] = useState([])
 
+    useEffect(() => {
+        fetchPostComments()
+    }, [])
+
     async function fetchPostComments() {
         const response = await PostService.getCommentsByPostId(params.id)
         setComments(response.data)
     }
-
-    useEffect(() => {
-        fetchPostComments()
-    }, [])
 
     return (
         <div className="post-id">
