@@ -3,13 +3,15 @@ import {useState} from "react";
 function PostAddForm({create, postsCount}) {
 
   const [post, setPost] = useState({title: '', body: ''})
+  const [count, setCount] = useState(1)
 
   function addNewPost(e) {
     e.preventDefault()
-    const newPost = {
-      ...post, id: postsCount
-    }
     if (post.title !== '' && post.body !== '') {
+      setCount(count + 1)
+      const newPost = {
+        ...post, id: Number(postsCount) + count
+      }
       create(newPost)
       setPost({title: '', body: ''})
     }

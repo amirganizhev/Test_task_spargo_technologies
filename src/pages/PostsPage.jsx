@@ -12,6 +12,7 @@ function PostsPage() {
   const [totalPages, setTotalPages] = useState(0)
   const [limitPosts, setLimiPosts] = useState(10)
   const [pageNumber, setPageNumber] = useState(1)
+  const [countPosts, setCountPosts] = useState(0)
   let pagesArray = []
   for (let i = 0; i < totalPages; i++) {
     pagesArray.push(i + 1)
@@ -25,6 +26,7 @@ function PostsPage() {
     const response = await PostService.getAll(limitPosts, pageNumber)
     setPosts(response.data)
     const totalPosts = response.headers['x-total-count']
+    setCountPosts(response.headers['x-total-count'])
     setTotalPages(Math.ceil(totalPosts / limitPosts))
   }
 
@@ -71,7 +73,7 @@ function PostsPage() {
   return (
     <div className='post-app'>
       <h1>Тестовое задание "Спарго технологии"</h1>
-      <PostAddForm postsCount={posts.length + 1} create={createPost} />
+      <PostAddForm postsCount={countPosts} create={createPost} />
       <SelectSort
           onChange={changePostsLimit}
           selectName="Выбрать количество отображаемых постов"
